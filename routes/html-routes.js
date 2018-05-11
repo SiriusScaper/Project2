@@ -23,10 +23,13 @@ module.exports = function(app) {
 
   // route for artist profile page
   app.get("/artist", function(req, res) {
-    res.sendFile(path.join(__dirname, "../views/**_ARTIST_PROFILE_.handlebars**"));
+    res.sendFile(
+      path.join(__dirname, "../views/**_ARTIST_PROFILE_.handlebars**")
+    );
   });
 
   // route for search page
   app.get("/search", function(req, res) {
     res.sendFile(path.join(__dirname, "../views/**_SEARCH_.handlebars**"));
   });
+};
