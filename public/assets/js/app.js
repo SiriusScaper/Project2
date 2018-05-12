@@ -31,12 +31,12 @@ const displayError = error => {
 
 //
 
-window.onload = () => {};
-
-window.onload = function() {
-	if (navigator.geolocation) {
-		navigator.geolocation.getCurrentPosition(displayLocation, displayError);
-	} else {
-		alert("Sorry, this browser doesn't support geolocation!");
-	}
+window.onload = () => {
+	const findUser = document.querySelector('#findMe');
+	findUser.onclick = element => {
+		element.preventDefault();
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(currLocation, displayError);
+		}
+	};
 };
