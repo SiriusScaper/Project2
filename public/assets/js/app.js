@@ -1,14 +1,17 @@
-//Require node-geocoder
-const NodeGeocoder = require('node-geocoder');
+let trackId;
+// axios call to current route to get location
+//Fetch call?
+
+let locations = [];
 
 // Call to navigator API for user location
-function currLocation(position) {
+function displayLocation(position) {
 	const lat = position.coords.latitude;
-	const lng = poistion.coords.longitude;
+	const lng = position.coords.longitude;
 
 	let currentLocation = [lat, lng];
 
-	const gogleLoc = new google.maps.LatLng(
+	let googleLoc = new google.maps.LatLng(
 		position.coords.latitude,
 		position.coords.longitude
 	);
@@ -31,12 +34,49 @@ const displayError = error => {
 
 //
 
+function trackMe() {
+	trackId = navigator.geolocation.getCurrentPosition(
+		displayLocation,
+		displayError
+	);
+}
+
+function clearTracking() {
+	if (trackId) {
+		navigator.geolocation.clearWatch(trackId);
+		trackId = null;
+	}
+}
+
+function computeTotalDistance() {
+	let totalDistance = 0;
+
+	if (locations.length > 1) {
+		for (let i = 1; i < locations.length; i++) {
+			totalDistance += google.maps.geometry.shperical.computeDistanceBetween(
+				locations[i - 1],
+				locations[i]
+			);
+		}
+	}
+	return totalDistance;
+}
+
 window.onload = () => {
 	const findUser = document.querySelector('#findMe');
 	findUser.onclick = element => {
 		element.preventDefault();
-		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(currLocation, displayError);
+		if (findUser.innerHTML === 'Start') {
+			findUser.innerHTML = 'Stop';
+			trackMe();
+		} else {
+			findUser.innerHTML = 'Start';
+			clearTracking();
+			let dist = computeTotalDistance();
+			if (dist > 0) {
+				dist = Math.round(d * 1000) / 1000;
+				const miles = dist / 1.6;
+			}
 		}
 	};
 };
