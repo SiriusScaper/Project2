@@ -2,6 +2,22 @@ let trackId;
 // axios call to current route to get location
 //Fetch call?
 
+fetch('/api/posts/', {
+	method: 'GET',
+	data: location,
+	dataType: 'json',
+	ContentType: 'application/json'
+})
+	.then(resp => {
+		return resp.json();
+	})
+	.then(location => {
+		console.log(location);
+	})
+	.catch(err => {
+		console.log(err);
+	});
+
 let locations = [];
 
 // Call to navigator API for user location
@@ -62,7 +78,7 @@ function computeTotalDistance() {
 	return totalDistance;
 }
 
-window.onload = () => {
+runFineUser = () => {
 	const findUser = document.querySelector('#findMe');
 	findUser.onclick = element => {
 		element.preventDefault();
