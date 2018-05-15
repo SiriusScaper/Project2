@@ -2,7 +2,7 @@
 <div class="left_side_bar"> 
 
       <div class="col_1">
-        <div class="box">
+        <div class="box2" style="margin-top: 10px;">
           <h1 id="subhead" class="lobster">Filter results by:</h1>
           <ul>
             <li><a href="/highest-to-lowest">Price - Highest to lowest</a></li>
@@ -22,7 +22,7 @@
 
       
       <div class="col_1">
-        <div class="box" style="margin-top: 125px;">
+        <div class="box" style="margin-top: 15px;">
           <h1 class="lobster">Featured Artist</h1>
           <p>Feature to come!</p>
           <br>
@@ -33,30 +33,23 @@
     </div>
 
     <div class="right_section">
-      <div class="common_content">
-        <h2>Welcome</h2>
+      <div class="common_content" style="margin-top: 10px;">
+        <h1 id="artist_name" class="lobster"><div id="artist_name">Welcome</div></h1>
        
         <p>Welcome to Think Ink. A catalog of tattoo artists at your fingertips.</p>
         </div>
 
 
-      <div class="top_content">
-
-				<div class="col-md-3">
 					{{#each artists}}
 					<div class="card artist-card" style="width: 18rem;">
-					  <img class="card-img-top" src="/images/artist-images/{{artistName}}/{{artistName}}1.jpg" style="width: 100%; height: 250px;">
+					  <img class="card-img-top" src="/images/artist-images/{{artistName}}/{{artistName}}1.jpg" style="width: 100%; height: 200px;">
 					  <div class="card-body">
-					    <h2 class="card-title">{{artistName}}</h5>
-					    <h4>{{location}}</h4>
-					    <h4>{{stylePref}}</h4>
-              <h4>{{hourlyRate}}</h4>
-					    <h4>{{independent}}</h4>
-					    <p class="card-text">{{{artistComments}}}</p>
-					    <a href="/search/{{this.id}}" class="btn btn-primary">Check them Out!</a>
+					    <h1 id="artist_name" class="card-title text-center lobster" style="font-size: 20px; font-weight: bold; margin: 5px; 5px; 5px; 0px;">{{artistName}}</h1>
+					    <h4 class="text-left" style="font-size: 14px; margin-left: 10px; margin-bottom: 5px;">{{location}}</h4>
+					    <h4 class="text-left" style="font-size: 14px; margin-left: 10px; margin-bottom: 5px;">Preferred Style: {{stylePref}}</h4>
+              <h4 class="text-left" style="font-size: 14px; margin-left: 10px; margin-bottom: 15px;">Hourly Rate ($/hr): {{hourlyRate}}</h4>
+					    <a href="/search/{{this.id}}" class="btn btn-primary btn-center" style="margin-left: 80px; margin-bottom: 15px;">Check them Out!</a>
 					  </div>
 					</div>
 					{{/each}}
-				</div>
-      </div>
     </div>
