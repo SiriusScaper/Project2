@@ -1,24 +1,16 @@
 let trackId;
 // axios call to current route to get location
 //Fetch call?
+const locations = [];
+const url = '/api/posts/';
 
-fetch('/api/posts/', {
-	method: 'GET',
-	data: location,
-	dataType: 'json',
-	ContentType: 'application/json'
-})
-	.then(resp => {
-		return resp.json();
+fetch(url, { method: 'get' })
+	.then(resp => resp.json())
+	.then(function(data) {
+		let artists = data.results;
+		console.log(artists);
 	})
-	.then(location => {
-		console.log(location);
-	})
-	.catch(err => {
-		console.log(err);
-	});
-
-let locations = [];
+	.catch(err => console.log(err));
 
 // Call to navigator API for user location
 function displayLocation(position) {
